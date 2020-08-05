@@ -10,7 +10,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 def start(bot, update):
-    message = "Welcome ! I am Site Checker bot. Please enter your phone number using /register xxxxxx to proceed or /get_id to get your chat ID"
+    message = "Welcome ! I am Site Checker bot. Please enter /get_id to get your chat ID to register in Site Checker"
     bot.sendMessage(update.message.chat_id, text=message)
 
 def send_alert(message, user):
