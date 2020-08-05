@@ -1,5 +1,5 @@
 from django import forms
-from os import environ as env
+
 from .models import TelegramAlertPlugin
 
 
@@ -9,6 +9,6 @@ class TelegramAlertForm(forms.ModelForm):
         widgets = {
             "telegram_id": forms.NumberInput(
                 attrs={"class": "form-control", "type": "number", "min": 1}
-            ),
+            )
         }
         fields = ("telegram_id", "active_status")

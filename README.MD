@@ -2,7 +2,7 @@
 
 Telegram Bot plugin for Site Checker
 
-## How to install 
+## How to install
 
 Find python package in dist, download and install it.
 ```
