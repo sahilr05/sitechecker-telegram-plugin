@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django_telegrambot.apps import DjangoTelegramBot  # NOQA
 
 from .forms import TelegramAlertForm
 from .models import TelegramAlertPlugin
@@ -24,15 +23,17 @@ def telegram_plugin(request):
                 .telegram_id
             )
             new_telegram_id = form.cleaned_data.get("telegram_id")
-            TelegramAlertPlugin.objects.filter(
-                telegram_id=old_telegram_id
-            ).update(  # NOQA
-                telegram_id=new_telegram_id
+            active_status = form.cleaned_data.get("active_status")
+            TelegramAlertPlugin.objects.filter(telegram_id=old_telegram_id).update( #NOQA
+                telegram_id=new_telegram_id, active_status=active_status
             )
         except Exception:
             telegram_id = form.cleaned_data.get("telegram_id")
+            active_status = form.cleaned_data.get("active_status")
             TelegramAlertPlugin.objects.create(
-                telegram_id=telegram_id, alert_receiver=request.user
+                telegram_id=telegram_id,
+                alert_receiver=request.user,
+                active_status=active_status,
             )
 
     context = {"form": form, "plugin_name": TelegramAlertPlugin.__name__}

@@ -4,15 +4,20 @@ Telegram Bot plugin for Site Checker
 
 ## How to install
 
-Find python package in dist, download and install it.
+* Add bot token in ```telegrambot.py```
+* Run following command
 ```
-pip install sc_telegram_bot.tar.gz
+python manage.py sdist
 ```
 
-## Integrating in SiteChecker
+* Navigate to ```dist``` and run following command to install package
+```
+pip install <package name>
+```
 
-* Add bot in settings > INSTALLED_APPS
+## Integrating with SiteChecker
 
+1. Add bot in settings > INSTALLED_APPS
 ```
 INSTALLED_APPS = [
 ...
@@ -21,9 +26,19 @@ INSTALLED_APPS = [
 ]
 ```
 
-* Add following url in sitechecker > accounts > urls.py
-
+2. Add following url in sitechecker > accounts > urls.py
 ```
 path("plugin/telegram_plugin", include("bot.urls", namespace="telegram_plugin")),
 ```
-* Run migrations
+
+3. Run migrations
+
+Go to [https://telegram.me/userinfobot](@userinfobot) and get your ```chat id```
+Enter ```chat id``` obtained from @userinfobot in
+```
+My account > Alert Plugins > Telegram Plugin
+```
+## Credits
+
+Required packages:
+[Python Telegram Bot](https://github.com/python-telegram-bot/python-telegram-bot)

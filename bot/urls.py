@@ -1,6 +1,6 @@
 from django.urls import path
 
-from . import views
+from . import views  # NOQA
 
 app_name = "bot"
 
